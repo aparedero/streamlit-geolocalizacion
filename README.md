@@ -15,6 +15,12 @@ This is a simple Streamlit web application that allows users to fetch their IP a
 
 ---
 
+## Live Demo
+
+Live demo of this app is on https://geolocation-example.streamlit.app/
+
+Please note you will see the IP address from the server this app is actually running, not your own IP :)
+
 ## Installation
 
 1. Clone this repository:
