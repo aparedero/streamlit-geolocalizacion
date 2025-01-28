@@ -1,4 +1,4 @@
-# IP Geopositioning App
+# IP Geolocation App
 
 This is a simple Streamlit web application that allows users to fetch their IP address and obtain its geographic location. It visualizes the results on a map and displays additional details in a table and JSON format.
 
