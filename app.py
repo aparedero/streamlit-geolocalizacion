@@ -7,14 +7,14 @@ valid_cert = True
 
 # Streamlit page configuration
 st.set_page_config(
-    page_title="IP geolocation",
+    page_title="IP geolocation using API REST",
     page_icon="world_map",
     layout="wide",
     )
 
 # Streamlit app title
 st.info("Source code of this example can be found on: https://github.com/aparedero/streamlit-geolocation-example")
-st.header("IP geolocation 🗺️", divider=True)
+st.header("IP geolocation 🗺️ using API REST", divider=True)
 
 # Streamlit sidebar configuration parameters
 st.sidebar.subheader("Settings")
