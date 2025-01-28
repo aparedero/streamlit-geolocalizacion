@@ -2,38 +2,38 @@ import requests
 import streamlit as st
 import pandas as pd
 
-#Inicializamos variables
+#Initializing variable for certificate validation
 cert_valido = True
 
-# Título de la app
+# Streamlit app title
 st.header("Geoposicionamiento IP", divider=True)
 
-# Opciones en barra lateral
+# Streamlit sidebar configuration parameters
 st.sidebar.subheader("Configuración")
 protocolo = st.sidebar.radio("Selecciona protocolo de consulta en ifconfig.me:", ["HTTP", "HTTPS"])
 if protocolo == "HTTPS":
     cert_valido = st.sidebar.checkbox("Comprobar certificado válido", value=True)
 
-
-#Captura la dirección IP y la localización
+#Python requests to get the IP address and location
 direccion_ip = requests.get(f"{protocolo.lower()}://ifconfig.me", verify=cert_valido)
 localizacion = requests.get(f"http://ip-api.com/json/{direccion_ip.text}", verify=cert_valido)
 
-#Muestra la dirección IP capturada
+#Show IP address
 st.write(f"**Tu dirección es:** {direccion_ip.text}")    
 
-#Crea Dataframe con los datos
+#Show capture information as dataframe
 st.write("Dataframe con datos")
 df2 = pd.DataFrame([localizacion.json()])
 st.dataframe(df2) 
 
-#Crea Mapa
+#Create map section
 st.subheader("Mapa 🌍")
-# Muestra la ciudad que ha identificado
+
+# Show captured city and create map object
 st.write(f"**Tu ciudad es:** {localizacion.json()['city']}")
 df = pd.DataFrame({"lat": [localizacion.json()['lat']], "lon": [localizacion.json()['lon']] })
 st.map(df)
 
-# Muestra el json
+# Show json contents as expander
 with st.expander("Ver JSON"):
     st.write(localizacion.json())
